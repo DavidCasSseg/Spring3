@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Set;
 
 @Entity(name = "hotel")
 @NoArgsConstructor
@@ -28,4 +30,12 @@ public class HotelEntity {
     private Integer rating;
 
     private BigDecimal price;
+
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER,
+            orphanRemoval = true,
+            mappedBy = "hotel"
+    )
+    private Set<ReservationEntity> reservation;
 }

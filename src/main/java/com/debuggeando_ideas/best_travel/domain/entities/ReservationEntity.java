@@ -1,13 +1,10 @@
 package com.debuggeando_ideas.best_travel.domain.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.cglib.core.Local;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -29,5 +26,10 @@ public class ReservationEntity implements Serializable {
     private LocalDateTime dateTimeReservation;
     private LocalDate dateStart;
     private LocalDate dateEnd;
+    private Integer totalDays;
     private BigDecimal price;
+
+    @ManyToOne
+    @JoinColumn(name = "hotel_id")
+    private HotelEntity hotel;
 }
