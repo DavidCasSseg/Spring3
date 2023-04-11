@@ -10,16 +10,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @Slf4j
-public class DemoApplication implements CommandLineRunner {
+public class BestTravelApplication implements CommandLineRunner {
 
-	@Autowired
-	private HotelRepository hotelRepository;
+	private final HotelRepository hotelRepository;
+	private final FlyRepository flyRepository;
 
-	@Autowired
-	private FlyRepository flyRepository;
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(BestTravelApplication.class, args);
 	}
 
 	@Override

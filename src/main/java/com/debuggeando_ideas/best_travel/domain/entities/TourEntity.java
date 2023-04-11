@@ -1,9 +1,6 @@
 package com.debuggeando_ideas.best_travel.domain.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,7 +19,23 @@ public class TourEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER,
+            orphanRemoval = true,
+            mappedBy = "tour"
+    )
     private Set<ReservationEntity> reservations;
+
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER,
+            orphanRemoval = true,
+            mappedBy = "tour"
+    )
     private Set<TicketEntity> tickets;
+
+    @ManyToOne
+    @JoinColumn(name = "id_customer")
     private CustomerEntity customer;
 }
