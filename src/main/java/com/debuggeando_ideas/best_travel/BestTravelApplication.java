@@ -12,8 +12,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Slf4j
 public class BestTravelApplication implements CommandLineRunner {
 
-	private final HotelRepository hotelRepository;
-	private final FlyRepository flyRepository;
+	@Autowired
+	private HotelRepository hotelRepository;
+
+	@Autowired
+	private FlyRepository flyRepository;
 
 
 	public static void main(String[] args) {
